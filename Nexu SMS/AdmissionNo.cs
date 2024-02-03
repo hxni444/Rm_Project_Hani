@@ -10,6 +10,6 @@ namespace Nexu_SMS.Repository
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //disable the identity
         [Column(TypeName ="varchar")]
         [StringLength(30)]
-        public   int  admissionNo {  get; set; }
+        public   string  admissionNo {  get; set; }
     }
 }

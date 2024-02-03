@@ -15,6 +15,7 @@ namespace Nexu_SMS
             builder.Services.AddControllers();
             builder.Services.AddTransient<AdmissionRepo>();
             builder.Services.AddDbContext<ContextClass>();
+            builder.Services.AddTransient<StudentRepo>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

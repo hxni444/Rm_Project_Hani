@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -20,6 +21,20 @@ namespace Nexu_SMS.Migrations
                 {
                     table.PrimaryKey("PK_AdmissionNoTable", x => x.admissionNo);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "students",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
+                    FirstName = table.Column<string>(name: "First Name", type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(name: "Last Name", type: "nvarchar(max)", nullable: false),
+                    dob = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_students", x => x.id);
+                });
         }
 
         /// <inheritdoc />
@@ -27,6 +42,9 @@ namespace Nexu_SMS.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AdmissionNoTable");
+
+            migrationBuilder.DropTable(
+                name: "students");
         }
     }
 }
