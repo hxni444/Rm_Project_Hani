@@ -24,7 +24,7 @@ namespace Nexu_SMS.Controllers
         }
 
         [HttpGet("Get_student_by_id{id}")]
-        public IActionResult GetStudentById(int id)
+        public IActionResult GetStudentById(string id)
         {
             return Ok(studentRepo.Get(id));
         }
@@ -37,7 +37,7 @@ namespace Nexu_SMS.Controllers
         }
 
         [HttpDelete("Delete_Student{id}")]
-        public IActionResult DeleteStudent(int id) 
+        public IActionResult DeleteStudent(string id) 
         {
             studentRepo.Delete(id);
             return Ok("Student Deleted");

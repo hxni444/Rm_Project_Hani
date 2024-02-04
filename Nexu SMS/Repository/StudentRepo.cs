@@ -17,14 +17,14 @@ namespace Nexu_SMS.Repository
             contextClass.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             Student student = contextClass.students.Find(id);
            contextClass.students.Remove(student);
             contextClass.SaveChanges();
         }
 
-        public Student Get(int id)
+        public Student Get(string id)
         {
             Student student = contextClass.students.Where(x=>x.Equals(id)).SingleOrDefault();
             return student;

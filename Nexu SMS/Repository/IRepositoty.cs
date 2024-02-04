@@ -2,10 +2,10 @@
 {
     public interface IRepositoty<T> where T : class
     {
-        T Get(int id);
+        T Get(string id);
         List<T> GetAll();
         void Add(T entity);
         void Update(T entity);
-        void Delete(int id);
+        void Delete(string id);
     }
 }

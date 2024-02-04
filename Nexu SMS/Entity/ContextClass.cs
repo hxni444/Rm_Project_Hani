@@ -13,6 +13,7 @@ namespace Nexu_SMS.Entity
 
         public DbSet<AdmissionNo> admissionNos { get; set; }
         public DbSet<Student> students { get; set; }
+        public DbSet<Users> users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
