@@ -41,19 +41,7 @@ namespace Nexu_SMS.Repository
             contextClass.SaveChanges();
         }
 
-        public string AddStudentVal(Student student)
-        {
-            AdmissionNo admission = contextClass.admissionNos.Find(student.id);
-            if (admission != null)
-            {
-                contextClass.students.Add(student);
-                contextClass.SaveChanges();
-                return "Student added";
-            }
-            else
-                return "id invalid";
-        }
-
+        
         public List <Student> GetStudentByClass(int std)
         {
             return contextClass.students.Where(x=>x.std==std).ToList();
