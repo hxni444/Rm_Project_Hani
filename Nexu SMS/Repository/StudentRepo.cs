@@ -53,5 +53,16 @@ namespace Nexu_SMS.Repository
             else
                 return "id invalid";
         }
+
+        public List <Student> GetStudentByClass(int std)
+        {
+            return contextClass.students.Where(x=>x.std==std).ToList();
+        }
+
+        public List<Student> GetStudentByClassAndStd(int std,char section)
+        {
+            return contextClass.students.Where(x => x.std == std && x.section==section).ToList();
+
+        }
     }
 }
