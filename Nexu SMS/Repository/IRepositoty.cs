@@ -1,6 +1,4 @@
-﻿using Nexu_SMS.Entity;
-
-namespace Nexu_SMS.Repository
+﻿namespace Nexu_SMS.Repository
 {
     public interface IRepositoty<T> where T : class
     {
@@ -9,7 +7,5 @@ namespace Nexu_SMS.Repository
         void Add(T entity);
         void Update(T entity);
         void Delete(string id);
-        List<T> GetStudentByClass(int std);
-       
     }
 }

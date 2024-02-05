@@ -41,16 +41,17 @@ namespace Nexu_SMS.Repository
             contextClass.SaveChanges();
         }
 
-        
-        public List <Student> GetStudentByClass(int std)
+        public string AddStudentVal(Student student)
         {
-            return contextClass.students.Where(x=>x.std==std).ToList();
-        }
-
-        public List<Student> GetStudentByClassAndStd(int std,char section)
-        {
-            return contextClass.students.Where(x => x.std == std && x.section==section).ToList();
-
+            AdmissionNo admission = contextClass.admissionNos.Find(student.id);
+            if (admission != null)
+            {
+                contextClass.students.Add(student);
+                contextClass.SaveChanges();
+                return "Student added";
+            }
+            else
+                return "id invalid";
         }
     }
 }

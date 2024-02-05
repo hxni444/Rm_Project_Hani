@@ -22,6 +22,35 @@ namespace Nexu_SMS.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Nexu_SMS.Entity.ClassModel", b =>
+                {
+                    b.Property<string>("ClassId")
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("ClassName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Class Name");
+
+                    b.Property<string>("Schedule")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Schedule");
+
+                    b.Property<string>("Student")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Teacherid")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ClassId");
+
+                    b.ToTable("classModels");
+                });
+
             modelBuilder.Entity("Nexu_SMS.Entity.Student", b =>
                 {
                     b.Property<string>("id")
@@ -44,6 +73,59 @@ namespace Nexu_SMS.Migrations
                     b.HasKey("id");
 
                     b.ToTable("students");
+                });
+
+            modelBuilder.Entity("Nexu_SMS.Entity.Teacher", b =>
+                {
+                    b.Property<string>("teacherId")
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar");
+
+                    b.Property<DateTime>("dateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("teacherAddress")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("teacherClass")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("teacherEmail")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("teacherFirstName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("teacherGender")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("teacherLastName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("teacherPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("teacherSubjectTaught")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar");
+
+                    b.HasKey("teacherId");
+
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("Nexu_SMS.Entity.Users", b =>

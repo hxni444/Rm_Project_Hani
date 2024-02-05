@@ -15,6 +15,12 @@ namespace Nexu_SMS.Entity
         public DbSet<Student> students { get; set; }
         public DbSet<Users> users { get; set; }
 
+        public DbSet<ClassModel> classModels { get; set; }
+        public DbSet<Teacher> teachers { get; set; }
+        public DbSet<SAttendance> sattendances { get; set; }
+        public DbSet<TAttendance> tattendances { get; set; }
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("conString"));

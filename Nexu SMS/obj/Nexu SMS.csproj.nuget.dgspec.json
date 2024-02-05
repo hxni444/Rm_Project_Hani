@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ceesharp\\Nexu SMS\\Nexu SMS.csproj": {}
+    "C:\\Hani files\\Nexu SMS\\Nexu SMS.csproj": {}
   },
   "projects": {
-    "C:\\ceesharp\\Nexu SMS\\Nexu SMS.csproj": {
+    "C:\\Hani files\\Nexu SMS\\Nexu SMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ceesharp\\Nexu SMS\\Nexu SMS.csproj",
+        "projectUniqueName": "C:\\Hani files\\Nexu SMS\\Nexu SMS.csproj",
         "projectName": "Nexu SMS",
-        "projectPath": "C:\\ceesharp\\Nexu SMS\\Nexu SMS.csproj",
-        "packagesPath": "C:\\Users\\Hani\\.nuget\\packages\\",
-        "outputPath": "C:\\ceesharp\\Nexu SMS\\obj\\",
+        "projectPath": "C:\\Hani files\\Nexu SMS\\Nexu SMS.csproj",
+        "packagesPath": "C:\\Users\\halziya\\.nuget\\packages\\",
+        "outputPath": "C:\\Hani files\\Nexu SMS\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Hani\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\halziya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -79,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
