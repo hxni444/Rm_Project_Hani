@@ -27,10 +27,10 @@ namespace Nexu_SMS.Entity
         [Column("Class")]
         public int clss { get; set; }
 
-        [Column( "Section",TypeName ="varachar")]
+        [Column( "Section",TypeName ="varchar")]
 
         [StringLength(50)]
-        public char section { get; set; }
+        public string section { get; set; }
 
     }
 }

@@ -48,7 +48,7 @@ namespace Nexu_SMS.Migrations
 
                     b.HasKey("ClassId");
 
-                    b.ToTable("classModels");
+                    b.ToTable("Class_Table");
                 });
 
             modelBuilder.Entity("Nexu_SMS.Entity.SAttendance", b =>
@@ -78,8 +78,17 @@ namespace Nexu_SMS.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("varchar");
 
+                    b.Property<int>("clss")
+                        .HasColumnType("int")
+                        .HasColumnName("Class");
+
                     b.Property<DateTime>("dob")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("eMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("E-mail");
 
                     b.Property<string>("fName")
                         .IsRequired()
@@ -90,6 +99,17 @@ namespace Nexu_SMS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Last Name");
+
+                    b.Property<string>("number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Mobile");
+
+                    b.Property<string>("section")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Section");
 
                     b.HasKey("id");
 

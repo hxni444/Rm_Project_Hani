@@ -12,8 +12,8 @@ using Nexu_SMS.Entity;
 namespace Nexu_SMS.Migrations
 {
     [DbContext(typeof(ContextClass))]
-    [Migration("20240206044940_initialMigra")]
-    partial class initialMigra
+    [Migration("20240206100310_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,7 +51,7 @@ namespace Nexu_SMS.Migrations
 
                     b.HasKey("ClassId");
 
-                    b.ToTable("classModels");
+                    b.ToTable("Class_Table");
                 });
 
             modelBuilder.Entity("Nexu_SMS.Entity.SAttendance", b =>
@@ -68,11 +68,9 @@ namespace Nexu_SMS.Migrations
 
                     b.Property<string>("studentId")
                         .IsRequired()
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("attendanceId");
-
-                    b.HasIndex("studentId");
 
                     b.ToTable("Student_Attendance_Table");
                 });
@@ -83,8 +81,17 @@ namespace Nexu_SMS.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("varchar");
 
+                    b.Property<int>("clss")
+                        .HasColumnType("int")
+                        .HasColumnName("Class");
+
                     b.Property<DateTime>("dob")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("eMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("E-mail");
 
                     b.Property<string>("fName")
                         .IsRequired()
@@ -95,6 +102,17 @@ namespace Nexu_SMS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Last Name");
+
+                    b.Property<string>("number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Mobile");
+
+                    b.Property<string>("section")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Section");
 
                     b.HasKey("id");
 
@@ -115,11 +133,9 @@ namespace Nexu_SMS.Migrations
 
                     b.Property<string>("teacherId")
                         .IsRequired()
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("attendanceId");
-
-                    b.HasIndex("teacherId");
 
                     b.ToTable("Teacher_Attendance_Table");
                 });
@@ -211,28 +227,6 @@ namespace Nexu_SMS.Migrations
                     b.HasKey("admissionNo");
 
                     b.ToTable("AdmissionNoTable");
-                });
-
-            modelBuilder.Entity("Nexu_SMS.Entity.SAttendance", b =>
-                {
-                    b.HasOne("Nexu_SMS.Entity.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("studentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("Nexu_SMS.Entity.TAttendance", b =>
-                {
-                    b.HasOne("Nexu_SMS.Entity.Teacher", "Teacher")
-                        .WithMany()
-                        .HasForeignKey("teacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Teacher");
                 });
 #pragma warning restore 612, 618
         }

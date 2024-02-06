@@ -62,13 +62,13 @@ namespace Nexu_SMS.Controllers
         }
 
         [HttpGet("GetStudentBySection/{sec}")]
-        public IActionResult GetStdBySec(char sec)
+        public IActionResult GetStdBySec(string sec)
         {
             return Ok(studentRepo.GetStdBySection(sec));
         }
 
         [HttpGet("GetStudentByClass,Section/{sec},{cls}")]
-        public IActionResult GetStdByClassnSec(char sec,int cls)
+        public IActionResult GetStdByClassnSec(string sec,int cls)
         {
             return Ok(studentRepo.GetStdBySectionNclass(sec,cls));
         }
