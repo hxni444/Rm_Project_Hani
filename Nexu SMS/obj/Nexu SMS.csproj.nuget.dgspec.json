@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Hani files\\Nexu SMS\\Nexu SMS.csproj": {}
+    "C:\\Hani files\\Rm_Project_Hani\\Nexu SMS\\Nexu SMS.csproj": {}
   },
   "projects": {
-    "C:\\Hani files\\Nexu SMS\\Nexu SMS.csproj": {
+    "C:\\Hani files\\Rm_Project_Hani\\Nexu SMS\\Nexu SMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Hani files\\Nexu SMS\\Nexu SMS.csproj",
+        "projectUniqueName": "C:\\Hani files\\Rm_Project_Hani\\Nexu SMS\\Nexu SMS.csproj",
         "projectName": "Nexu SMS",
-        "projectPath": "C:\\Hani files\\Nexu SMS\\Nexu SMS.csproj",
+        "projectPath": "C:\\Hani files\\Rm_Project_Hani\\Nexu SMS\\Nexu SMS.csproj",
         "packagesPath": "C:\\Users\\halziya\\.nuget\\packages\\",
-        "outputPath": "C:\\Hani files\\Nexu SMS\\obj\\",
+        "outputPath": "C:\\Hani files\\Rm_Project_Hani\\Nexu SMS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\halziya\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -16,7 +16,21 @@ namespace Nexu_SMS.Entity
         [Column("Last Name")]
         public string lName { get; set; }
 
+        [Column("E-mail")]
+        public string eMail { get; set; }
+
+        [Column("Mobile")]
+        public string number { get; set; }
+
         public DateTime dob { get; set; }
+
+        [Column("Class")]
+        public int clss { get; set; }
+
+        [Column( "Section",TypeName ="varachar")]
+
+        [StringLength(50)]
+        public char section { get; set; }
 
     }
 }

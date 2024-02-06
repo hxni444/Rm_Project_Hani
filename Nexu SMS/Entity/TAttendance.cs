@@ -17,7 +17,6 @@ namespace Nexu_SMS.Entity
         public bool status { get; set; }
         ////
        
-        [ForeignKey("teacherId")]
-        public Teacher? Teacher { get; set; }
+        
     }
 }

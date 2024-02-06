@@ -55,7 +55,22 @@ namespace Nexu_SMS.Controllers
             studentRepo.AddStudentVal(student);
             return /*Ok(student);*/ StatusCode(200);
         }
+        [HttpGet("GetStudentByClass/{cls}")]
+        public  IActionResult GetStdByClass(int cls)
+        {
+            return Ok(studentRepo.GetStdByClass(cls));
+        }
 
+        [HttpGet("GetStudentBySection/{sec}")]
+        public IActionResult GetStdBySec(char sec)
+        {
+            return Ok(studentRepo.GetStdBySection(sec));
+        }
 
+        [HttpGet("GetStudentByClass,Section/{sec},{cls}")]
+        public IActionResult GetStdByClassnSec(char sec,int cls)
+        {
+            return Ok(studentRepo.GetStdBySectionNclass(sec,cls));
+        }
     }
 }

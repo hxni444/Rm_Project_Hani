@@ -15,11 +15,30 @@ namespace Nexu_SMS.Controllers
             this.tattendanceRepo = tattendanceRepo;
         }
 
-        [HttpPost("Add")]
-        public IActionResult Add(TAttendance attendance)
+        [HttpPost("Add_Teacher_Attadndace")]
+        public IActionResult AddTAttendance(TAttendance attendance)
         {
-            tattendanceRepo.AddAttendance(attendance);
+            tattendanceRepo.Add(attendance);
             return Ok(attendance);
+        }
+
+        [HttpPut("UpdateTeacherAttendance")]
+        public IActionResult UpdateTAttandance(TAttendance attendance)
+        {
+            tattendanceRepo.Update(attendance);
+            return Ok(attendance);
+        }
+
+        [HttpGet("GetTeacherAttandance")]
+        public IActionResult GetAllAttendance(string id)
+        {
+            return Ok(tattendanceRepo.Get(id));
+        }
+
+        [HttpGet("GetAllTeacherAttendance")]
+        public IActionResult GetAttendance()
+        {
+            return Ok(tattendanceRepo.GetAll());
         }
     }
 }

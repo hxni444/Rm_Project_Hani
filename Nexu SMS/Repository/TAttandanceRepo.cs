@@ -2,7 +2,7 @@
 
 namespace Nexu_SMS.Repository
 {
-    public class TAttandanceRepo : IAttendanceRepo<TAttendance>
+    public class TAttandanceRepo : IRepositoty<TAttendance>
     {
         private readonly ContextClass contextClass;
 
@@ -11,13 +11,35 @@ namespace Nexu_SMS.Repository
             this.contextClass = contextClass;
         }
 
-        public void AddAttendance(TAttendance attendance)
+        public void Add(TAttendance attendance)
         {
-            contextClass.tattendances.Add(attendance);
-            contextClass.SaveChanges();
+            var TcrAtn = from t in contextClass.teachers
+                         where t.teacherId == attendance.teacherId
+                         select t;
+            if (TcrAtn != null)
+            {
+                contextClass.tattendances.Add(attendance);
+                contextClass.SaveChanges();
+            }
+           
         }
 
-        public void UpdateAttendance(TAttendance attendance)
+        public void Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TAttendance Get(string id)
+        {
+            return contextClass.tattendances.SingleOrDefault(x => x.teacherId == id);
+        }
+
+        public List<TAttendance> GetAll()
+        {
+            return contextClass.tattendances.ToList();
+        }
+
+        public void Update(TAttendance attendance)
         {
             contextClass.tattendances.Update(attendance);
             contextClass.SaveChanges();

@@ -12,8 +12,8 @@ using Nexu_SMS.Entity;
 namespace Nexu_SMS.Migrations
 {
     [DbContext(typeof(ContextClass))]
-    [Migration("20240205091951_teacher")]
-    partial class teacher
+    [Migration("20240206044940_initialMigra")]
+    partial class initialMigra
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,29 @@ namespace Nexu_SMS.Migrations
                     b.ToTable("classModels");
                 });
 
+            modelBuilder.Entity("Nexu_SMS.Entity.SAttendance", b =>
+                {
+                    b.Property<Guid>("attendanceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("studentId")
+                        .IsRequired()
+                        .HasColumnType("varchar(30)");
+
+                    b.HasKey("attendanceId");
+
+                    b.HasIndex("studentId");
+
+                    b.ToTable("Student_Attendance_Table");
+                });
+
             modelBuilder.Entity("Nexu_SMS.Entity.Student", b =>
                 {
                     b.Property<string>("id")
@@ -76,6 +99,29 @@ namespace Nexu_SMS.Migrations
                     b.HasKey("id");
 
                     b.ToTable("students");
+                });
+
+            modelBuilder.Entity("Nexu_SMS.Entity.TAttendance", b =>
+                {
+                    b.Property<Guid>("attendanceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("teacherId")
+                        .IsRequired()
+                        .HasColumnType("varchar(30)");
+
+                    b.HasKey("attendanceId");
+
+                    b.HasIndex("teacherId");
+
+                    b.ToTable("Teacher_Attendance_Table");
                 });
 
             modelBuilder.Entity("Nexu_SMS.Entity.Teacher", b =>
@@ -165,6 +211,28 @@ namespace Nexu_SMS.Migrations
                     b.HasKey("admissionNo");
 
                     b.ToTable("AdmissionNoTable");
+                });
+
+            modelBuilder.Entity("Nexu_SMS.Entity.SAttendance", b =>
+                {
+                    b.HasOne("Nexu_SMS.Entity.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("studentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Nexu_SMS.Entity.TAttendance", b =>
+                {
+                    b.HasOne("Nexu_SMS.Entity.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("teacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
                 });
 #pragma warning restore 612, 618
         }

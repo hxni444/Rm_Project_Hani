@@ -16,10 +16,10 @@ namespace Nexu_SMS.Controllers
             return Ok(classes);
         }
 
-       
+
 
         [HttpGet("Details/{id}")]
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {
             ClassModel model = classes.Find(c => c.ClassId == id);
             if (model == null)
@@ -30,7 +30,7 @@ namespace Nexu_SMS.Controllers
         }
 
         [HttpPost("AssignTeacher/{id}")]
-        public IActionResult AssignTeacher(int id, [FromBody] string teacher)
+        public IActionResult AssignTeacher(string id, [FromBody] string teacher)
         {
             ClassModel model = classes.Find(c => c.ClassId == id);
             if (model == null)
@@ -44,11 +44,11 @@ namespace Nexu_SMS.Controllers
             return RedirectToAction("Details", new { id = id });
         }
 
-       
-        
+
+
 
         [HttpGet("Edit/{id}")]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
             ClassModel model = classes.Find(c => c.ClassId == id);
             if (model == null)
@@ -59,10 +59,10 @@ namespace Nexu_SMS.Controllers
         }
 
 
-       
+
 
         [HttpDelete("Delete/{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             ClassModel model = classes.Find(c => c.ClassId == id);
             if (model == null)
@@ -71,9 +71,6 @@ namespace Nexu_SMS.Controllers
             }
             return Ok(model);
         }
-
-      
-
 
 
 
@@ -82,4 +79,10 @@ namespace Nexu_SMS.Controllers
 
 
     }
+
+
+
+
+
 }
+

@@ -3,13 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Nexu_SMS.Entity
 {
+    [Table("Class_Table")]
     public class ClassModel
     {
         [Key]
         [Column(TypeName = "varchar")]
         [StringLength(30)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //disable the identity
-        public int ClassId { get; set; }
+        public string ClassId { get; set; }
         [Column("Class Name")]
         public string ClassName { get; set; }
         [Column("Schedule")]
