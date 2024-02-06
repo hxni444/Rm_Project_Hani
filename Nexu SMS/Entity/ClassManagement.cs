@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Nexu_SMS.Entity
 {
     [Table("Class_Table")]
-    public class ClassModel
+    public class ClassManagement
     {
         [Key]
         [Column(TypeName = "varchar")]
@@ -13,14 +13,9 @@ namespace Nexu_SMS.Entity
         public string ClassId { get; set; }
         [Column("Class Name")]
         public string ClassName { get; set; }
-        [Column("Schedule")]
-        public string Schedule { get; set; }
 
-       /* //Navigation property
-        [ForeignKey("teacherid")]
-*/
+        [Column("Teacher ID")]
         public string Teacherid { get; set; }
 
-        public List<string> Student { get; set; } = new List<string>();
     }
 }
