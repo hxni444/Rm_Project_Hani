@@ -19,10 +19,13 @@ namespace Nexu_SMS.Entity
         [Column("E-mail")]
         public string eMail { get; set; }
 
-        [Column("Mobile")]
+        [Column("Mobile No")]
         public string number { get; set; }
 
         public DateTime dob { get; set; }
+
+        [Column("Gender")]
+        public string gender { get; set; }
 
         [Column("Class")]
         public int clss { get; set; }

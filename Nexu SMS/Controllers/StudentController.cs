@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Nexu_SMS.Entity;
 using Nexu_SMS.Repository;
@@ -18,25 +19,30 @@ namespace Nexu_SMS.Controllers
         }
 
         [HttpGet("Get_all_Student")]
+        [Authorize(Roles = "Admin,Teacher")]
+
         public IActionResult Get()
         {
             return Ok(studentRepo.GetAll());
         }
 
-        [HttpGet("Get_student_by_id{id}")]
+        [HttpGet("GetStudentById/{id}")]
+        [Authorize(Roles = "Admin,Teacher")]
+
         public IActionResult GetStudentById(string id)
         {
             return Ok(studentRepo.Get(id));
         }
 
-        [HttpPost("Add_Student")]
+        [HttpPost("AddStudent")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddStudent(Student student)
         {
             studentRepo.Add(student);
             return Ok("Student Added");
         }
 
-        [HttpDelete("Delete_Student{id}")]
+        [HttpDelete("DeleteStudent/{id}")]
         public IActionResult DeleteStudent(string id) 
         {
             studentRepo.Delete(id);
@@ -49,25 +55,33 @@ namespace Nexu_SMS.Controllers
             return Ok(student);
         }
 
-        [HttpPost("Register_student")]
+        [HttpPost("RegisterStudent")]
+        [Authorize(Roles = "Admin,Teacher,Student")]
         public IActionResult RegisterStudent(Student student)
         {
             studentRepo.AddStudentVal(student);
             return /*Ok(student);*/ StatusCode(200);
         }
+
         [HttpGet("GetStudentByClass/{cls}")]
-        public  IActionResult GetStdByClass(int cls)
+        [Authorize(Roles = "Admin,Teacher")]
+
+        public IActionResult GetStdByClass(int cls)
         {
             return Ok(studentRepo.GetStdByClass(cls));
         }
 
         [HttpGet("GetStudentBySection/{sec}")]
+        [Authorize(Roles = "Admin,Teacher")]
+
         public IActionResult GetStdBySec(string sec)
         {
             return Ok(studentRepo.GetStdBySection(sec));
         }
 
         [HttpGet("GetStudentByClass,Section/{sec},{cls}")]
+        [Authorize(Roles = "Admin,Teacher")]
+
         public IActionResult GetStdByClassnSec(string sec,int cls)
         {
             return Ok(studentRepo.GetStdBySectionNclass(sec,cls));

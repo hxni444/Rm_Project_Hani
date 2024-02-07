@@ -15,7 +15,7 @@ namespace Nexu_SMS.Repository
         {
             var check = from s in contextClass.subjects
                         from c in contextClass.classes
-                        where s.subId == entity.subId && c.ClassId == entity.classId
+                        where s.sub_Id == entity.subId && c.ClassId == entity.classId
                         select s;
             if (check != null)
             {
@@ -27,12 +27,13 @@ namespace Nexu_SMS.Repository
         public void Delete(string id)
         {
             Exam xam = contextClass.exams.Find(id);
-           contextClass.Remove(xam);
+            contextClass.exams.Remove(xam);
+            contextClass.SaveChanges();
         }
 
         public Exam Get(string id)
         {
-            return contextClass.exams.SingleOrDefault(x => x.Equals(id));
+            return contextClass.exams.Find(id);
         }
 
         public List<Exam> GetAll()

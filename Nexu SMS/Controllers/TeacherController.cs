@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Nexu_SMS.Entity;
 using Nexu_SMS.Repository;
@@ -7,6 +8,8 @@ namespace Nexu_SMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
+
     public class TeacherController : ControllerBase
     {
         private TeacherRepo teacherRepository;
@@ -16,7 +19,7 @@ namespace Nexu_SMS.Controllers
             this.teacherRepository = teacherRepository;
         }
         //Adding teachers
-        [HttpPost]
+        [HttpPost("AddTeacher")]
         public IActionResult AddTeacher([FromBody] Teacher teacher)
         {
             try
@@ -47,6 +50,8 @@ namespace Nexu_SMS.Controllers
         }
         //retrieving teachers by their Id
         [HttpGet, Route("getTeachersByTheirId/{teacherId}")]
+        [Authorize(Roles = "Admin,Teacher")]
+
         public IActionResult GetTeacherById(string teacherId)
         {
             try
@@ -66,6 +71,8 @@ namespace Nexu_SMS.Controllers
         }
         //Updating teachers on their Id basis
         [HttpPut("updatingTeachersById")]
+        [Authorize(Roles = "Admin,Teacher")]
+
         public IActionResult UpdateTeacher([FromBody] Teacher teacher)
         {
             try
@@ -95,7 +102,7 @@ namespace Nexu_SMS.Controllers
             }
         }
 
-        [HttpGet("byClass/{teacherClass}")]
+        [HttpGet("TeacherbyClass/{teacherClass}")]
         public IActionResult GetTeachersByClass(string teacherClass)
         {
             try
@@ -114,7 +121,7 @@ namespace Nexu_SMS.Controllers
             }
         }
 
-        [HttpGet("bySubject/{teacherSubject}")]
+        [HttpGet("TeacherbySubject/{teacherSubject}")]
         public IActionResult GetTeachersBySubject(string teacherSubject)
         {
             try

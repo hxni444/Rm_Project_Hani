@@ -48,7 +48,9 @@ namespace Nexu_SMS.Repository
        
         public void Delete(string id)
         {
-            throw new NotImplementedException();
+            ClassManagement cls = contextClass.classes.Find(id);
+            contextClass.classes.Remove(cls);
+            contextClass.SaveChanges();
         }
     }
 

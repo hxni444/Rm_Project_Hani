@@ -9,7 +9,7 @@ namespace Nexu_SMS.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //disable the identity
         [Column("Exam ID")]
-        public int examId { get; set; }
+        public string examId { get; set; }
 
         [Column("Exam Name")]
         public string examName { get; set; }
@@ -27,11 +27,12 @@ namespace Nexu_SMS.Entity
         [Column("Subject ID")]
         public string subId { get; set; }
 
+        //Navigation
 
-       /* [ForeignKey("classId")]
+        [ForeignKey("classId")]
         public ClassManagement? classManagement { get; set; }
 
         [ForeignKey("subId")]
-        public Subject? subject { get; set; }*/
+        public Subject? subject { get; set; }
     }
 }
