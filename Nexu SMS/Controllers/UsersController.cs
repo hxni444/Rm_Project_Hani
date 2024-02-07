@@ -13,7 +13,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Nexu_SMS.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    /*  [Authorize(Roles = "Admin")]*/
+    [AllowAnonymous]
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase

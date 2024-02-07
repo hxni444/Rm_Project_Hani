@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mx4jSuhaz/pZlhqlmoTdK3sI4pYwsUBjbYc7CQKXkMd8HT9aFyLIX5hCYxiBjI8YOBw0c9v9hrdsr+AsGeVQ5g==",
+  "dgSpecHash": "BxQrGMslQ3CIMS+pO9GA9r8oiUBwvsG0uivTqBLH/aW+n2+4OLQuREw9+2sEdMkNM8/6TEAkouypFCZSeZ+nOQ==",
   "success": true,
-  "projectFilePath": "C:\\ceesharp\\Rm-project_priya\\Nexu SMS\\Nexu SMS.csproj",
+  "projectFilePath": "C:\\ceesharp\\Rm_Project_Hani\\Nexu SMS\\Nexu SMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hani\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Hani\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
