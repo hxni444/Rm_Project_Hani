@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Youpage from './YouPage'
-import DashBoard from './DashBoard';
+import DashBoard from './student/StudentDashBoard';
 import DashBoard2 from './dashboard2';
 import '/'
 function App() {
