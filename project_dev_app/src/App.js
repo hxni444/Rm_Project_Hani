@@ -2,10 +2,15 @@ import logo from './logo.svg';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Youpage from './YouPage'
+import DashBoard from './DashBoard';
+import DashBoard2 from './dashboard2';
+import '/'
 function App() {
   return (
     <div className="App">
-      <Youpage/>
+      {/* <Youpage/> */}
+      <DashBoard/>
+      
     </div>
   );
 }

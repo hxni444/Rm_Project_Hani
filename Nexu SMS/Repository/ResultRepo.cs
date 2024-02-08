@@ -6,6 +6,12 @@ namespace Nexu_SMS.Repository
     public class ResultRepo : IRepositoty<Result>
     {
         public readonly ContextClass contextclass;
+
+        public ResultRepo(ContextClass contextclass)
+        {
+            this.contextclass = contextclass;
+        }
+
         public void Add(Result entity)
         {
             var record = from e in contextclass.exams
@@ -27,10 +33,10 @@ namespace Nexu_SMS.Repository
             contextclass.results.Remove(result);
         }
 
-        public List<Result> GetBYID(string id)
+        public Result GetBYID(string id)
         {
 
-            return contextclass.results.Where(x => x.studentId == id).ToList();
+            return contextclass.results.Find(id);
         }
 
         public List<Result> GetAll()
@@ -60,13 +66,13 @@ namespace Nexu_SMS.Repository
                          };
              return query.ToList();
          }*/
-        public List<PublishResult> GetResults()
+        public List<Models.PublishResult> GetResults()
         {
             var query = from result in contextclass.results
                         join student in contextclass.students
                         on result.studentId equals student.id
                         group result by new { result.studentId, result.examId, result.subjectId, student.fName } into g
-                        select new PublishResult()
+                        select new Models.PublishResult()
                         {
                             stu_id = g.Key.studentId,
                             examId = g.Key.examId,

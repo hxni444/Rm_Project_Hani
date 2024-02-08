@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Nexu_SMS.DTO;
 using Nexu_SMS.Entity;
 using Nexu_SMS.Repository;
 
@@ -12,14 +14,17 @@ namespace Nexu_SMS.Controllers
     public class StudentController : ControllerBase
     {
         private readonly StudentRepo studentRepo;
+        private readonly IMapper mapper;
 
-        public  StudentController(StudentRepo studentRepo)
+        public  StudentController(StudentRepo studentRepo,IMapper mapper)
         {
             this.studentRepo = studentRepo;
+            this.mapper = mapper;   
         }
 
         [HttpGet("Get_all_Student")]
-        [Authorize(Roles = "Admin,Teacher")]
+        //[Authorize(Roles = "Admin,Teacher")]
+        [AllowAnonymous]
 
         public IActionResult Get()
         {
@@ -27,7 +32,8 @@ namespace Nexu_SMS.Controllers
         }
 
         [HttpGet("GetStudentById/{id}")]
-        [Authorize(Roles = "Admin,Teacher")]
+        // [Authorize(Roles = "Admin,Teacher")]
+        [AllowAnonymous]
 
         public IActionResult GetStudentById(string id)
         {
@@ -35,28 +41,54 @@ namespace Nexu_SMS.Controllers
         }
 
         [HttpPost("AddStudent")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         public IActionResult AddStudent(Student student)
         {
-            studentRepo.Add(student);
-            return Ok("Student Added");
+            try
+            {
+                studentRepo.Add(student);
+                return Ok(student);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpDelete("DeleteStudent/{id}")]
+        [AllowAnonymous]
         public IActionResult DeleteStudent(string id) 
         {
-            studentRepo.Delete(id);
-            return Ok("Student Deleted");
+            try
+            {
+                studentRepo.Delete(id);
+                return Ok($"Deleted the student with studentid{id}");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         [HttpPut("Edit_Student")]
-        public IActionResult EditStudent(Student student)
+        [AllowAnonymous]
+        public IActionResult Update([FromBody] StudentUpdatedto studentupdatedto)
         {
-            studentRepo.Update(student);
-            return Ok(student);
+            Student studentupdate = mapper.Map<Student>(studentupdatedto);
+            if (ModelState.IsValid)
+            {
+                studentRepo.Update(studentupdate);
+                return Ok(studentupdate);
+            }
+            return new JsonResult("Something went wrong") { StatusCode = 500 };
+
         }
 
         [HttpPost("RegisterStudent")]
-        [Authorize(Roles = "Admin,Teacher,Student")]
+        //[Authorize(Roles = "Admin,Teacher,Student")]
+        [AllowAnonymous]
         public IActionResult RegisterStudent(Student student)
         {
             studentRepo.AddStudentVal(student);
@@ -64,27 +96,86 @@ namespace Nexu_SMS.Controllers
         }
 
         [HttpGet("GetStudentByClass/{cls}")]
-        [Authorize(Roles = "Admin,Teacher")]
-
+        //[Authorize(Roles = "Admin,Teacher")]
+        [AllowAnonymous]
         public IActionResult GetStdByClass(int cls)
         {
-            return Ok(studentRepo.GetStdByClass(cls));
+            try
+            {
+                List<Student> students = studentRepo.GetStdByClass(cls);
+                List<Studentdto> studentdtos = mapper.Map<List<Studentdto>>(students);
+                return Ok(studentdtos);
+              
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpGet("GetStudentBySection/{sec}")]
-        [Authorize(Roles = "Admin,Teacher")]
-
-        public IActionResult GetStdBySec(string sec)
+        // [Authorize(Roles = "Admin,Teacher")]
+        [AllowAnonymous]
+        public IActionResult GetStdBySection(string sec)
         {
-            return Ok(studentRepo.GetStdBySection(sec));
+            /*try
+            {
+                List<Studentdto> studentdtos = studentRepo.GetStdBySection(sec);
+                if (studentdtos == null)
+                {
+                    return NotFound($"Student with section {sec} not found");
+                }
+                return Ok(studentdtos);
+            }
+            catch (Exception)
+            {
+                throw;
+            }*/
+            try
+            {
+                var students = studentRepo.GetStdBySection(sec);
+                var studentdtos = mapper.Map<List<Studentdto>>(students);
+                return Ok(studentdtos);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpGet("GetStudentByClass,Section/{sec},{cls}")]
-        [Authorize(Roles = "Admin,Teacher")]
+        //[Authorize(Roles = "Admin,Teacher")]
+        [AllowAnonymous]
 
-        public IActionResult GetStdByClassnSec(string sec,int cls)
-        {
-            return Ok(studentRepo.GetStdBySectionNclass(sec,cls));
+        public IActionResult GetStdBySectionNclass(string sec,int cls)
+        {/*
+            try
+            {
+                List<Studentdto> studentdtos = studentRepo.GetStdBySectionNclass(sec, cls);
+                if (studentdtos == null)
+                {
+                    return NotFound($"Student with class {cls} and section {sec} not found");
+                }
+                return Ok(studentdtos);
+            }
+            catch (Exception)
+            {
+                throw;
+            }*/
+            try
+            {
+                var students = studentRepo.GetStdBySectionNclass(sec, cls);
+                var studentdtos = mapper.Map<List<Studentdto>>(students);
+                return Ok(studentdtos);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
