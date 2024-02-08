@@ -79,7 +79,41 @@ export default function DashBoard() {
                 </li>    
               </ul>
           </div>
-            
+
+          <div class="nav-item">
+              <a class="nav-link text-white collapsed" href="../pages/billing.html" data-bs-toggle="collapse" data-bs-target="#class-submenu" aria-expanded="false" aria-controls="class-submenu">
+                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">class</i>
+                </div>
+                <span class="nav-link-text ms-1">Class</span>
+              </a>
+              <ul class="collapse" id="class-submenu">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Assign Teacher</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Classes</a>
+                </li>    
+              </ul>
+          </div> 
+
+           <div class="nav-item">
+              <a class="nav-link text-white collapsed" href="../pages/billing.html" data-bs-toggle="collapse" data-bs-target="#exam-submenu" aria-expanded="false" aria-controls="exam-submenu">
+                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">import_contacts</i>
+                </div>
+                <span class="nav-link-text ms-1">Exam</span>
+              </a>
+              <ul class="collapse" id="exam-submenu">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Schedule</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Exams</a>
+                </li>    
+              </ul>
+          </div>  
+           
           
             <li class="nav-item">
               <a class="nav-link text-white " href="../pages/notifications.html">
