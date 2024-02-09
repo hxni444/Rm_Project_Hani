@@ -52,11 +52,6 @@ namespace Nexu_SMS.Repository
 
 
             }
-            if(entity.role == "Admin")
-            {
-                _context.users.Add(entity);
-                _context.SaveChanges();
-            }
         }
 
         public void Delete(string id)
