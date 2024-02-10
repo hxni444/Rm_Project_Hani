@@ -1,6 +1,0 @@
-@Nexu_SMS_HostAddress = http://localhost:5099
-
-GET {{Nexu_SMS_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

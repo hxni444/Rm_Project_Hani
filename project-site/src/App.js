@@ -4,9 +4,11 @@ import Home from './Home'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './LoginPage';
 import NoPage from './NoPage';
-import AdminDashboard from './AdminDashBoard'
+import AdminDashboard from './Admin/AdminDashBoard'
 import StudentDashboard from './Student/StudentDashBoard'
 import TeacherDashboard from './Teacher/TeacherDashBoard'
+import ExamSch from './Admin/ExamSh';
+import Profile from './Admin/Profile';
 function App() {
   return (
     
@@ -19,8 +21,8 @@ function App() {
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="Admin-Dashboard" element={<AdminDashboard />}>
-            {/* <Route path="add-student" element={<AddStudent />} />
-            <Route path="add-teacher" element={<AddTeacher />} /> */}
+            <Route path="schedule-exam" element={<ExamSch/>} />
+            <Route path="admin-profile" element={<Profile/>} />
           </Route>
           <Route path="Student-Dashboard" element={<StudentDashboard />}>
             {/* <Route path="take-exam" element={<TakeExam />} />
