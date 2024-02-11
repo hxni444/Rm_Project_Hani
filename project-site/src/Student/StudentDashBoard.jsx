@@ -45,19 +45,9 @@ export default function DashBoard() {
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">book</i>
                 </div>
-                <span class="nav-link-text ms-1">Registation</span>
+                <span class="nav-link-text ms-1">Attendance</span>
               </a>
-              <ul class="collapse" id="user-submenu">
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Register to NEXUSLIVE</a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">My Details</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Edit Profile</a>
-                </li>    
-              </ul>
+              
           </div>
            
           

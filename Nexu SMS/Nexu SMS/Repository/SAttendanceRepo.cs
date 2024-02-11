@@ -21,6 +21,7 @@ namespace Nexu_SMS.Repository
 
             if (stdAtn != null)
             {
+                attendance.attendanceId=Guid.NewGuid();
                 contextClass.sattendances.Add(attendance);
                 contextClass.SaveChanges();
             }

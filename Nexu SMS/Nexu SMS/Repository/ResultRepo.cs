@@ -39,6 +39,10 @@ namespace Nexu_SMS.Repository
 
             return contextclass.results.Find(id);
         }
+        public List<Result> GetByExamIdNStudentId(string exmId,string stuId)
+        {
+            return contextclass.results.Where(x=>x.studentId==stuId&&x.examId==exmId).ToList();
+        }
 
         public List<Result> GetAll()
         {
@@ -67,13 +71,13 @@ namespace Nexu_SMS.Repository
                          };
              return query.ToList();
          }*/
-        public List<Models.PublishResult> GetResults()
+        public List<PublishResult> GetResults()
         {
             var query = from result in contextclass.results
                         join student in contextclass.students
                         on result.studentId equals student.id
                         group result by new { result.studentId, result.examId, result.subjectId, student.fName } into g
-                        select new Models.PublishResult()
+                        select new PublishResult()
                         {
                             stu_id = g.Key.studentId,
                             examId = g.Key.examId,

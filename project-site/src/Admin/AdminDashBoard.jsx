@@ -41,10 +41,15 @@ export default function DashBoard() {
               </a>
               <ul class="collapse" id="Teacher-submenu">
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Registration</a>
+                  <Link to="/Admin-Dashboard/teacher-registration">
+                  <a class="nav-link text-white" >Registration</a>
+                  </Link>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="#">Attandance</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Attandance Report</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="#">Get all Teacher</a>

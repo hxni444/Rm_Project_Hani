@@ -9,6 +9,10 @@ import StudentDashboard from './Student/StudentDashBoard'
 import TeacherDashboard from './Teacher/TeacherDashBoard'
 import ExamSch from './Admin/ExamSh';
 import Profile from './Admin/Profile';
+import TeacherRegister from './Admin/TeacherRegistration';
+import TeacherProfile from './Teacher/TeacherProfile';
+import ViewResult from './Result/ViewResult';
+import AddResult from './Result/AddResult';
 function App() {
   return (
     
@@ -23,12 +27,17 @@ function App() {
           <Route path="Admin-Dashboard" element={<AdminDashboard />}>
             <Route path="schedule-exam" element={<ExamSch/>} />
             <Route path="admin-profile" element={<Profile/>} />
+            <Route path='teacher-registration' element={<TeacherRegister/>}/>
           </Route>
           <Route path="Student-Dashboard" element={<StudentDashboard />}>
             {/* <Route path="take-exam" element={<TakeExam />} />
             <Route path="show-marks" element={<ShowMarks />} /> */}
           </Route>
-          <Route path="Teacher-Dashboard" element={<TeacherDashboard />}>
+          <Route path="teacher-dashboard" element={<TeacherDashboard />}>
+            <Route path='profile' element={<TeacherProfile/>}/>
+            <Route path='view-result' element={<ViewResult/>}/>
+            <Route path='add-result' element={<AddResult/>}/>
+
             {/* <Route path="schedule-exam" element={<ScheduleExam />} />
             <Route path="get-marks" element={<GetMarks />} /> */}
           </Route>

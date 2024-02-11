@@ -96,5 +96,24 @@ namespace Nexu_SMS.Controllers
                 throw;
             }
         }
+        [HttpGet("GetByExamIdNStudentId/{exmId}/{stuId}")]
+        public IActionResult GetStudentByStIdnExID(string exmId, string stuId)
+        {
+            try
+            {
+                return Ok(resultrepo.GetByExamIdNStudentId(exmId,stuId));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet("GetStudentResulWithTotalMArk")]
+        public IActionResult GetStudentResulWithTotalMArk()
+        {
+            return Ok(resultrepo.GetResults());
+        }
     }
 }
