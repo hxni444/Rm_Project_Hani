@@ -104,6 +104,11 @@ namespace Nexu_SMS.Migrations
                         .HasColumnType("real")
                         .HasColumnName("Marks");
 
+                    b.Property<string>("semName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Sem Name");
+
                     b.Property<string>("studentId")
                         .IsRequired()
                         .HasColumnType("varchar(30)")

@@ -23,6 +23,10 @@ namespace Nexu_SMS.Entity
         [Column("Marks")]
         public float marks { get; set; }
 
+        [Column("Sem Name")]
+        public string semName { get; set; }
+
+
 
 
 

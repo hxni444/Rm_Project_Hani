@@ -11,10 +11,11 @@ import ExamSch from './Admin/ExamSh';
 import Profile from './Admin/Profile';
 import TeacherRegister from './Admin/TeacherRegistration';
 import TeacherProfile from './Teacher/TeacherProfile';
-import ViewResult from './Result/ViewResult';
+import ViewResult from './Result/AllResult';
 import AddResult from './Result/AddResult';
 import StudentProfile from './Student/StudentProfile';
 import EditProfile from './Student/EditProfile'
+import ResultReportStudent from './Result/ResultReportStudent'
 function App() {
   return (
     
@@ -39,6 +40,10 @@ function App() {
           <Route path="Student-Dashboard" element={<StudentDashboard />}>
           <Route index element={<StudentProfile />} />
           <Route path="student-profile/edit-profile" element={<EditProfile />} />
+          <Route path="exam-result" element={<ViewResult/>}/>
+          <Route path="exam-report" element={<ResultReportStudent/>}/>
+
+
         </Route>
 
           <Route path="teacher-dashboard" element={<TeacherDashboard />}>

@@ -29,7 +29,7 @@ namespace Nexu_SMS.Repository
 
         public void Delete(string id)
         {
-            Result result = contextclass.results.SingleOrDefault(r=>r.ResultId==id);
+            Result result = contextclass.results.SingleOrDefault(r => r.ResultId == id);
             contextclass.results.Remove(result);
             contextclass.SaveChanges();
         }
@@ -38,10 +38,6 @@ namespace Nexu_SMS.Repository
         {
 
             return contextclass.results.Find(id);
-        }
-        public List<Result> GetByExamIdNStudentId(string exmId,string stuId)
-        {
-            return contextclass.results.Where(x=>x.studentId==stuId&&x.examId==exmId).ToList();
         }
 
         public List<Result> GetAll()
@@ -56,41 +52,37 @@ namespace Nexu_SMS.Repository
             contextclass.SaveChanges();
         }
 
-        /* public List<PublishResult> GetResults()
-         {
-             var query = from result in contextclass.results
-                         join student in contextclass.students
-                         on result.studentId equals student.id
-                         select new PublishResult()
-                         {
-                             stu_id = result.studentId,
-                             examId = result.examId,
-                             studentName = student.fName, // Assuming this is the property for student name in Students table
-                             sub_Id = result.subjectId,
-                             totalMarks = result.Sum(i => i.marks)
-                         };
-             return query.ToList();
-         }*/
-        public List<PublishResult> GetResults()
+
+
+        public List<Models.PublishResult> GetResults(string id, string sem)
         {
-            var query = from result in contextclass.results
-                        join student in contextclass.students
-                        on result.studentId equals student.id
-                        group result by new { result.studentId, result.examId, result.subjectId, student.fName } into g
-                        select new PublishResult()
-                        {
-                            stu_id = g.Key.studentId,
-                            examId = g.Key.examId,
-                            sub_Id = g.Key.subjectId,
-                            studentName = g.Key.fName,
-                            totalMarks = g.Sum(r => r.marks)
-                        };
-            return query.ToList();
+            var fullres = from res in contextclass.results
+                          join student in contextclass.students
+                          on res.studentId equals student.id
+                          where res.studentId == id && res.semName == sem
+                          group res by new { res.semName, res.examId } into groupResult
+                          select new Models.PublishResult()
+                          {
+                              stu_id = id, // Assuming stu_id is the same for all results in the group
+                              examId = groupResult.Key.examId, // Take the examId from the group key
+                              subjectResults = groupResult.Select(r => new SubjectResult
+                              {
+                                  sub_Id = r.subjectId,
+                                  marks = r.marks
+                              }).ToList(),
+                              totalMarks = (int)groupResult.Sum(r => r.marks)
+
+                          };
+
+            return fullres.ToList();
         }
+
 
         Result IRepositoty<Result>.Get(string id)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

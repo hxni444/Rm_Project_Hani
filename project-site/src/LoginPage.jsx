@@ -33,7 +33,8 @@ export default function LoginPageNew() {
         else{
           setErr("invalid credentials")
         }
-      } else {
+      }
+       else {
         setErr("enter valid credentials")
       }
     })

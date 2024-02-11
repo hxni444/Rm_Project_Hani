@@ -20,7 +20,7 @@ export default function DashBoard() {
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link text-white active bg-gradient-primary" >
-                <Link to="student-profile">
+                <Link to="./">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10"></i>
                 </div>
@@ -39,7 +39,14 @@ export default function DashBoard() {
               </a>
               <ul class="collapse" id="billing-submenu">
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Result</a>
+                  <Link to="exam-result">
+                  <a class="nav-link text-white">All Result</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="exam-report">
+                  <a class="nav-link text-white">Report</a>
+                  </Link>
                 </li>
               </ul>
           </div>

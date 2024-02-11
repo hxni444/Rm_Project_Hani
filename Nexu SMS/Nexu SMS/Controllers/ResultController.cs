@@ -17,7 +17,7 @@ namespace Nexu_SMS.Controllers
         private readonly ResultRepo resultrepo;
         private readonly IMapper mapper;
 
-        public ResultController(ResultRepo resultrepo,IMapper mapper)
+        public ResultController(ResultRepo resultrepo, IMapper mapper)
         {
             this.resultrepo = resultrepo;
             this.mapper = mapper;
@@ -27,7 +27,7 @@ namespace Nexu_SMS.Controllers
 
         public IActionResult Add(Resultdto resultdto)
         {
-          
+
             Result result = mapper.Map<Result>(resultdto);
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace Nexu_SMS.Controllers
         }
         [AllowAnonymous]
         [HttpGet("GetResultById/{id}")]
-        
+
         public IActionResult GetStudentById(string id)
         {
             try
@@ -96,24 +96,10 @@ namespace Nexu_SMS.Controllers
                 throw;
             }
         }
-        [HttpGet("GetByExamIdNStudentId/{exmId}/{stuId}")]
-        public IActionResult GetStudentByStIdnExID(string exmId, string stuId)
+        [HttpGet("GetSemAllres")]
+        public IActionResult GetSemRes(string id, string sem)
         {
-            try
-            {
-                return Ok(resultrepo.GetByExamIdNStudentId(exmId,stuId));
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        [HttpGet("GetStudentResulWithTotalMArk")]
-        public IActionResult GetStudentResulWithTotalMArk()
-        {
-            return Ok(resultrepo.GetResults());
+            return Ok(resultrepo.GetResults(id, sem));
         }
     }
 }

@@ -15,16 +15,12 @@ namespace Nexu_SMS.DTO
 
         public DateTime dob { get; set; }
 
-        [Column("Gender")]
         public string gender { get; set; }
 
-        [Column("Class")]
-        public int clss { get; set; }
+        public string semName { get; set; }
 
-        [Column("Section", TypeName = "varchar")]
 
-        [StringLength(50)]
-        public string section { get; set; }
+        public string streamName { get; set; }
 
         public string email { get; set; }
         public string number {  get; set; }
