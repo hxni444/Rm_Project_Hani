@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Pills from './TopButtons'
-import { Link, useNavigate } from 'react-router-dom'
+// import Pills from './TopButtons'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 export default function StudentProfile() {
   const [students,setStudents] = useState([])
@@ -31,9 +31,16 @@ export default function StudentProfile() {
   
 
   return ( 
-    <div>
-      <Pills/>
-      <div>
+    
+      <div  class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Login</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Student</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">Student Dash Board</h6>
+        </nav>
+        
       <div class="px-4 py-5 my-2 text-center">
 
     <h1 class="display-5 fw-bold text-body-emphasis">Welcome {username}</h1>
@@ -69,7 +76,7 @@ export default function StudentProfile() {
                     </tr>
                 </tbody>
             </table>
-            <Link to="/editprofile">
+            <Link to="student-profile/edit-profile">
             <button>Edit Details</button>
             </Link>
         </div>
@@ -77,7 +84,8 @@ export default function StudentProfile() {
       </div>
     </div>
   </div>
+  <Outlet/>
       </div>
-    </div>
+   
   )
 }

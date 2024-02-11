@@ -13,6 +13,8 @@ import TeacherRegister from './Admin/TeacherRegistration';
 import TeacherProfile from './Teacher/TeacherProfile';
 import ViewResult from './Result/ViewResult';
 import AddResult from './Result/AddResult';
+import StudentProfile from './Student/StudentProfile';
+import EditProfile from './Student/EditProfile'
 function App() {
   return (
     
@@ -29,10 +31,16 @@ function App() {
             <Route path="admin-profile" element={<Profile/>} />
             <Route path='teacher-registration' element={<TeacherRegister/>}/>
           </Route>
+          {/* <Route path="Student-Dashboard" element={<StudentDashboard />}>
+            <Route path="student-profile" element={<StudentProfile />} />
+                <Route path="edit-profile" element={<EditProfile/>}/>
+            <Route/>
+          </Route> */}
           <Route path="Student-Dashboard" element={<StudentDashboard />}>
-            {/* <Route path="take-exam" element={<TakeExam />} />
-            <Route path="show-marks" element={<ShowMarks />} /> */}
-          </Route>
+          <Route index element={<StudentProfile />} />
+          <Route path="student-profile/edit-profile" element={<EditProfile />} />
+        </Route>
+
           <Route path="teacher-dashboard" element={<TeacherDashboard />}>
             <Route path='profile' element={<TeacherProfile/>}/>
             <Route path='view-result' element={<ViewResult/>}/>
