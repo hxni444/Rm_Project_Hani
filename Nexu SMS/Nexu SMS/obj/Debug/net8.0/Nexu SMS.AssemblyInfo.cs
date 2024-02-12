@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nexu SMS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ad40f540193ebcc08db2edd74d1f2f3c81070b9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be5162d3dbee311f7c44c4d220a508de53418306")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nexu SMS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nexu SMS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
